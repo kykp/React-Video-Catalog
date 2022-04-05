@@ -3,9 +3,9 @@ import "./Movie.css"
 function Movie (props) {
 return ( 
     <div className="Card">
-        <img src={props.img} alt={props.title}></img>
-        <h2>{props.title}</h2>
-        <p>{props.year} - {props.type} </p>
+        <img src={props.Poster} alt={props.Title}></img>
+        <h2>{props.Title}</h2>
+        <p>{props.Year} - {props.Type} </p>
 
     </div>
 )

@@ -13,15 +13,19 @@ class Search extends React.Component {
 
     handlKey = (event) => {
         if(event.key === "Enter") {
-            this.props.search(this.state.search)
+            this.props.search(this.state.search, this.state.filter)
         }
     }
-    radio = (e) =>{
+
+    onButtonClick = () => {
+         this.props.search(this.state.search, this.state.filter)
+    }
+
+    onFilter = (e) =>{
         this.setState({filter: e.target.value})
     }
 
     render(){
-
     return <>
     <div className="Search">
         <input 
@@ -31,16 +35,20 @@ class Search extends React.Component {
             onChange={(e) => this.setState({search: e.target.value})}
             onKeyDown={this.handlKey}
             />
-            <button className="glow-on-hover" onClick={() => {this.props.search(this.state.search)}}>search</button>
+            <button 
+                className="glow-on-hover" 
+                onClick={this.onButtonClick}
+                >search
+            </button>
            
     </div>
     <div className="Filter">
-    <input onClick={this.radio} type="radio" id="all" name="button_radio" value="all"/>
-    <label htmlFor="all">All</label>
-    <input onClick={this.radio} type="radio" id="movie" name="button_radio" value="movie"/>
-    <label htmlFor="movie">Movies</label>
-    <input onClick={this.radio} type="radio" id="serials" name="button_radio" value="serials"/>
-    <label htmlFor="serials">Serials</label>
+    <input defaultChecked onClick={this.onFilter} type="radio" id="all" name="button_radio" value=""/>
+    <label htmlFor="all">all</label>
+    <input onClick={this.onFilter} type="radio" id="movie" name="button_radio" value="movie"/>
+    <label htmlFor="movie">movies</label>
+    <input onClick={this.onFilter} type="radio" id="series" name="button_radio" value="series"/>
+    <label htmlFor="series">series</label>
     </div>
     </>
     }

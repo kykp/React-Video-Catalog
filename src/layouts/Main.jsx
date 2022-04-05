@@ -14,11 +14,10 @@ class Main extends React.Component {
       .then((data) => this.setState({ movies: data.Search }));
   }
 
-  onSearch = (str) =>{
-    fetch(`http://www.omdbapi.com/?apikey=deb2a7f3&s=${str}`)
+  onSearch = (str, filter) =>{
+    fetch(`http://www.omdbapi.com/?apikey=deb2a7f3&s=${str}&type=${filter}`)
     .then((Response) => Response.json())
     .then((data) => this.setState({ movies: data.Search }));
-    
   }
 
   render() { 
@@ -27,7 +26,7 @@ class Main extends React.Component {
       <>
         <Search search={this.onSearch}/>
         <div className="App">
-        {movies.length? 
+        {movies.length?
         <Movies base={this.state.movies}/>
         : <h2> Loadding ...</h2>
         }

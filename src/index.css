@@ -1,5 +1,5 @@
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #282830;
     color: white;
 }
@@ -8,7 +8,46 @@ body {
     max-width: 1024px;
     margin: 0 auto;
 }
+
+.Search {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.Search >input {
+    min-height: 25px;
+    border-radius: 6px;
+    border: none;
+    width: 350px;
+    padding: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    
+} 
+input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.Search >button {
+    min-height: 25px;
+    padding: 10px;
+    padding-left:20px;
+    border: 2px solid white;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: linear-gradient(90deg, rgb(255 255 255 / 100%), rgb(0 0 0 / 0%) 26%);
+    color: white;
+}
+
+.Search >button:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, rgb(255 255 255 / 100%), rgb(51, 190, 241) 26%);
+    color: black;
+}
 .App {
+    margin-top: 15px;
     min-height: calc(100vh - 74px - 74px);
     padding: 0;
     margin-left: 1rem;
@@ -19,7 +58,6 @@ body {
 }
 
 .Header {
-    width: 100%;
     min-height: 74px;
     display: flex;
     justify-content: left;
@@ -28,7 +66,6 @@ body {
     font-size: 10px;
 }
 .Footer {
-    width: 100%;
     min-height: 74px;
     display: flex;
     justify-content: right;
@@ -78,3 +115,12 @@ p
     padding:0;
     font-size: 13px;
 }
+
+.Filter {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+

@@ -1,5 +1,3 @@
-import "./Movie.css"
-
 function Movie (props) {
 return ( 
     <div className="Card">

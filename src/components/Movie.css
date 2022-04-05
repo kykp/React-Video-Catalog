@@ -1,0 +1,8 @@
+.card {
+    width:100px;
+    height:100px;
+    box-shadow: 1px 1px 1px 1px rgb(0, 195, 255);
+    font-size: 15px;
+    text-align: center;
+    overflow: hidden;
+}

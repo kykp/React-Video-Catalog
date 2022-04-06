@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "//kykp.github.io/React-Video-Catalog/static/css/main.ceb36e00.css",
-    "main.js": "//kykp.github.io/React-Video-Catalog/static/js/main.6430feb5.js",
+    "main.js": "//kykp.github.io/React-Video-Catalog/static/js/main.1519eea0.js",
     "index.html": "//kykp.github.io/React-Video-Catalog/index.html",
     "main.ceb36e00.css.map": "//kykp.github.io/React-Video-Catalog/static/css/main.ceb36e00.css.map",
-    "main.6430feb5.js.map": "//kykp.github.io/React-Video-Catalog/static/js/main.6430feb5.js.map"
+    "main.1519eea0.js.map": "//kykp.github.io/React-Video-Catalog/static/js/main.1519eea0.js.map"
   },
   "entrypoints": [
     "static/css/main.ceb36e00.css",
-    "static/js/main.6430feb5.js"
+    "static/js/main.1519eea0.js"
   ]
 }

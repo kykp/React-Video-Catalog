@@ -1,11 +1,16 @@
 import Movie from "./Movie";
 
 function Movies (props) {
-    return (
-        props.base.map(i => {
-          return <Movie key={i.imdbID} {...i}/>
-        })
-       
+
+  const { base = []} = props;
+
+    return (<>
+      {base.length ? (
+        base.map((i) => <Movie key={i.imdbID} {...i}/>)
+      ) : (
+        <h4>Nothing found</h4>
+      )}
+      </>
     )
 }
 

@@ -76,7 +76,6 @@ input:active, :hover, :focus {
 .Card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
     justify-items: center;
     color:#9BA3AF;
 
@@ -96,6 +95,7 @@ input:active, :hover, :focus {
     font-size: 15px;
     overflow: hidden;
     padding: 5px 5px;
+    text-align: center;
 }
 
 .Header >h1 {
@@ -121,6 +121,13 @@ p
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+}
+
+.samples_buttons {
+    display: flex;
+
+    justify-content: center;
     margin: 0 auto;
 }
 

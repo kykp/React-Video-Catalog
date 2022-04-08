@@ -1,6 +1,6 @@
 import { Header } from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
-import Main from "./layouts/Main";
+import { Main } from "./layouts/Main";
 
 import "./index.css";
 

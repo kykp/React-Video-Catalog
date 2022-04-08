@@ -1,43 +1,42 @@
-import React from "react";
-import "../index.css";
+import React, {useState, useEffect} from "react";
 import Movies from "../components/Movies"
-import Search from "../components/Search"
+import {Search} from "../components/Search"
 import Preloader from "../components/Preloader";
+import "../index.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-class Main extends React.Component {
-  state = {
-    movies: [],
-    loading: true,
-  };
+export function Main () {
 
-  componentDidMount() {
-    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
-      .then((Response) => Response.json())
-      .then((data) => this.setState({ movies: data.Search, loading: true }))
-      .catch((err) => {
-        console.error(err);
-        this.setState({loading:false})
-      })
-  }
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  onSearch = (str, filter) =>{
-    this.setState({loading: true})
+useEffect(() => {
+  fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
+  .then((Response) => Response.json())
+  .then((data) => {
+    setMovies(data.Search)
+    setLoading(true)})
+  .catch((err) => {
+    console.error(err);
+    setLoading({loading:false})
+  })
+},[])
+  const onSearch = (str, filter) =>{
+    setLoading({loading: true})
     fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}&type=${filter}`)
     .then((Response) => Response.json())
-    .then((data) => this.setState({ movies: data.Search, loading: true}))
+    .then((data) => {
+      setMovies(data.Search)
+      setLoading(true)})
     .catch((err) => {
       console.error(err);
-      this.setState({loading:false})
+      setLoading({loading:false})
     })
   }
-
-  render() { 
-    const {movies, loading} = this.state;
     return (
       <>
-       <Search search={this.onSearch}/>
+       <Search onSearch={onSearch}/>
          <div className="App">
         {loading
         ?<Movies base={movies}/>
@@ -47,6 +46,5 @@ class Main extends React.Component {
        </>
     );
   }
-}
 
-export default Main;
+

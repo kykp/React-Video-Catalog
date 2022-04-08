@@ -1,50 +1,59 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
+export function Search(props) {
+  const {
+    onSearch = Function.prototype
+  } = props;
 
-    this.state = {
-      search: "",
-      filter: "all",
-    };
-  }
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
 
-  handlKey = (event) => {
+  const buttonRef = useRef(null);
+   
+  const handlKey = (event) => {
     if (event.key === "Enter") {
-      this.props.search(this.state.search, this.state.filter);
+      onSearch(search, filter);
     }
   };
 
-  onButtonClick = () => {
-    this.props.search(this.state.search, this.state.filter);
+  const onButtonClick = () => {
+    onSearch(search, filter);
   };
 
-  onFilter = (e) => {
-    this.setState(() => ({ filter: e.target.value }), () => {
-        this.props.search(this.state.search, this.state.filter)
-    });
+  const onFilter = (e) => {
+    setFilter(e.target.value);
+    onSearch(search, e.target.value)
   };
 
-  render() {
+  const onSample = (e) => {
+    buttonRef.current = e.target.value
+    setSearch(buttonRef.current)
+    onSearch(buttonRef.current, filter)
+  }
+
     return (
       <>
+        <div className="samples_buttons">
+          <button onClick={onSample} value="Batman">Batman</button>
+          <button onClick={onSample} value="Superman">SuperMan</button>
+          <button onClick={onSample} value="Simpsons">Simpsons</button>
+        </div>
         <div className="Search">
           <input
             type="search"
             placeholder="Search..."
-            value={this.state.search}
-            onChange={(e) => this.setState({ search: e.target.value })}
-            onKeyDown={this.handlKey}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handlKey}
           />
-          <button className="glow-on-hover" onClick={this.onButtonClick}>
+          <button className="glow-on-hover" onClick={onButtonClick}>
             search
           </button>
         </div>
         <div className="Filter">
           <input
             defaultChecked
-            onClick={this.onFilter}
+            onChange={onFilter}
             type="radio"
             id="all"
             name="button_radio"
@@ -52,7 +61,7 @@ class Search extends React.Component {
           />
           <label htmlFor="all">all</label>
           <input
-            onClick={this.onFilter}
+            onChange={onFilter}
             type="radio"
             id="movie"
             name="button_radio"
@@ -60,7 +69,7 @@ class Search extends React.Component {
           />
           <label htmlFor="movie">movies</label>
           <input
-            onClick={this.onFilter}
+            onChange={onFilter}
             type="radio"
             id="series"
             name="button_radio"
@@ -70,7 +79,5 @@ class Search extends React.Component {
         </div>
       </>
     );
-  }
 }
 
-export default Search;
